@@ -1,0 +1,5 @@
+<h2>Upload SOP Document</h2>
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="sop_file" accept=".pdf,.docx,.txt"/>
+  <button type="submit">Upload and Embed</button>
+</form>
