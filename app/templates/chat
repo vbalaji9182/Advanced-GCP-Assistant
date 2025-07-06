@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>GCP Assistant Chat</title></head>
+<body>
+  <h2>Ask your GCP question</h2>
+  <label><input type="radio" name="mode" value="offline" checked> Offline</label>
+  <label><input type="radio" name="mode" value="online"> Online</label>
+  <input id="question" type="text" />
+  <button onclick="ask()">Ask</button>
+  <div id="response"></div>
+  <script>
+    function ask() {
+      const question = document.getElementById('question').value;
+      const mode = document.querySelector('input[name="mode"]:checked').value;
+      fetch('/api/ask', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ question, mode })
+      }).then(res => res.json()).then(data => {
+        document.getElementById('response').innerText = data.response;
+      });
+    }
+  </script>
+</body>
+</html>
